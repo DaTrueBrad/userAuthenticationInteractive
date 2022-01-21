@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 4000;
 const sequelize = require('./sequelize')
+const {connect} = require('./testConnection')
 const bcrypt = require('bcrypt')
 
 //Middleware
@@ -58,6 +59,7 @@ app.post('/login', async (req, res) => {
     res.status(401).send('Username is Incorrect')
   }
 })
-// sequelize.authenticate()
+
+connect()
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
